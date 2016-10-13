@@ -2,13 +2,20 @@ from numpy import *
 from matplotlib.pyplot import *
 
 tri_num=[1]
-divisors = []
-
-for i in range(2, 10001):
+divisors = [1]
+i=2
+while max(divisors) < 500:
 	tri_num.append(tri_num[i-2] + i)
-	primes = prime_factors(tri_num[i-2])
+	primes = array(prime_factors(tri_num[i-2]))
+	uniques = array(unique(primes))
+	factors = 1
+	for j in uniques:
+		factors *= (len(primes [ where (primes == j)])+1)
+	divisors.append(factors)
+	i+=1
 
-	divisors.append(temp_div*2)
+tri_num[i-3]
+
 
 def prime_factors(n):
     """Returns all the prime factors of a positive integer"""
