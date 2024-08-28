@@ -1,5 +1,8 @@
 import numpy as np
+import decimal
 
+# Set the precision to 60 digits
+decimal.getcontext().prec = 60
 
 
 # Example usage
@@ -44,4 +47,4 @@ def numerator_sequence(n):
  		num = num // 10
  		return sum 
 
- 		
+ 
