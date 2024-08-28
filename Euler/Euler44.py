@@ -8,17 +8,18 @@ def pentagon(n):
     return p
 
 
-def combinations(n):
-    combinations = itertools.combinations(list(range(1, n)), 2)
+def combinations(n, start=1):
+    combinations = itertools.combinations(list(range(start, n)), 2)
     return list(combinations)
 
 def pentagon_list(n):
     plist = [pentagon(i) for i in range(n)]
     return plist
 
-def pentagon_arithmetics(n):
+def pentagon_arithmetics(n, start=1):
     t0 =time.time()
-    clist = combinations(n)
+    clist = combinations(n, start)
+    print("Length: " +str(len(clist)))
     matches = []
     plist = pentagon_list(n)
     for i in range(len(clist)):
@@ -30,8 +31,10 @@ def pentagon_arithmetics(n):
             print(clist[i])
             if pdiff in plist:
                 matches.append(clist[i])
-        if i % 10000 == 0:
+                print("WIN!")
+                print(pdiff)
+        if i % 100000 == 0:
             print(i)
-            print (round(time.time() - t0),2)
-    print ('Time: ' + str(round(time.time() - t0),2))
+            print (round(time.time() - t0,1))
+    print ('Time: ' + str(round(time.time() - t0,2)))
     return matches
